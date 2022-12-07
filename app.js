@@ -1,3 +1,4 @@
+const fileInput = document.getElementById("file");
 const modeBtn = document.getElementById("mode-btn");
 const destroyBtn = document.getElementById("destroy-btn");
 const eraserBtn = document.getElementById("eraser-btn");
@@ -52,10 +53,10 @@ function onColorClick(event){
 function onModeClick(){
     if(isFilling){
         isFilling = false;
-        modeBtn.innerText = "Fill"
+        modeBtn.innerText = "채우기"
     }else{
         isFilling = true;
-        modeBtn.innerText = "Draw"
+        modeBtn.innerText = "그리기"
     }
 }
 
@@ -73,8 +74,19 @@ function onDestroyClick(){
 function onEraserClick(){
     ctx.strokeStyle = "white";
     isFilling = false;
-    modeBtn.innerHTML = "Fill";
+    modeBtn.innerHTML = "채우기";
 }
+
+function onFileChange(event){
+    const file = event.target.files[0];
+    const url = URL.createObjectURL(file);
+    const image = new Image()
+    image.src = url;
+    image.onload = function(){
+        ctx.drawImage(image, 0, 0, CANVAS_WIDTH,CANVAS_HEIGHT);
+    }
+}
+
 
 
 //위치잡기
@@ -100,3 +112,5 @@ modeBtn.addEventListener("click", onModeClick);
 destroyBtn.addEventListener("click",onDestroyClick);
 //지우기
 eraserBtn.addEventListener("click",onEraserClick);
+//file 업로드
+fileInput.addEventListener("change",onFileChange);
