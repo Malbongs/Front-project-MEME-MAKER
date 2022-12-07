@@ -56,10 +56,10 @@ function onColorClick(event){
 function onModeClick(){
     if(isFilling){
         isFilling = false;
-        modeBtn.innerText = "채우기"
+        modeBtn.innerText = "🎨 색 채우기"
     }else{
         isFilling = true;
-        modeBtn.innerText = "그리기"
+        modeBtn.innerText = "✏️ 선 그리기"
     }
 }
 
@@ -77,7 +77,7 @@ function onDestroyClick(){
 function onEraserClick(){
     ctx.strokeStyle = "white";
     isFilling = false;
-    modeBtn.innerHTML = "채우기";
+    modeBtn.innerHTML = "🎨 색 채우기";
 }
 
 function onFileChange(event){
