@@ -1,3 +1,4 @@
+const saveBtn = document.getElementById("save");
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
 const modeBtn = document.getElementById("mode-btn");
@@ -101,6 +102,13 @@ function onDubleClick(event){
 
 }
 
+function onSaveClick(){
+    const url = canvas.toDataURL();
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "myDrawing.png";
+    a.click();
+}
 
 //text넣기
 canvas.addEventListener("dblclick", onDubleClick);
@@ -129,3 +137,5 @@ destroyBtn.addEventListener("click",onDestroyClick);
 eraserBtn.addEventListener("click",onEraserClick);
 //file 업로드
 fileInput.addEventListener("change",onFileChange);
+//이미지 저장
+saveBtn.addEventListener("click",onSaveClick);
